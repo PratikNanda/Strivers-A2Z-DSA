@@ -1,0 +1,175 @@
+unordered_set (C++ STL) — Python: set
+python
+s = {1, 2, 3}
+s.add(4)             # {1, 2, 3, 4}
+s.remove(2)          # {1, 3, 4}
+s.discard(5)         # No error, set stays {1, 3, 4}
+s.pop()              # Removes and returns an arbitrary item
+s.clear()            # set()
+s.update([5, 6])     # Adds 5 and 6: {3, 4, 5, 6}
+s.intersection({4, 5, 6})  # {4, 5, 6}
+s.union({7})         # {3, 4, 5, 6, 7}
+Common Methods: add, remove, discard, pop, clear, update, intersection, union, difference, issubset, issuperset
+
+vector (C++ STL) — Python: list
+python
+lst = [1, 2, 3]
+lst.append(4)        # [1, 2, 3, 4]
+lst.pop()            # Pops 4, returns [1, 2, 3]
+lst.insert(1, 99)    # [1, 99, 2, 3]
+lst.remove(99)       # [1, 2, 3]
+lst.extend([5, 6])   # [1, 2, 3, 5, 6]
+lst.clear()          # []
+lst.sort()           # Sorts in-place
+lst.reverse()        # Reverses in-place
+lst.count(2)         # Number of times 2 appears
+lst.index(2)         # Index of first 2
+Common Methods: append, pop, insert, remove, extend, clear, sort, reverse, count, index
+
+set (C++ STL) — Python: set
+Same as unordered_set (see above).
+Python sets are always unordered and unique.
+
+unordered_multiset (C++ STL) — Python: collections.Counter
+python
+from collections import Counter
+ms = Counter([1, 2, 2, 3])
+ms.update([2, 3])     # Adds counts: {2:3, 3:2, 1:1}
+ms.subtract([3, 3])   # Removes counts: {2:3, 3:0, 1:1}
+ms.elements()         # Iterator: 1x1, 2x3, 3x0 (skipped)
+ms.most_common(1)     # [(2, 3)]
+ms.clear()            # Counter()
+Common Methods: update, subtract, elements, most_common, clear
+
+multiset (C++ STL) — Python: collections.Counter
+Same methods as unordered_multiset.
+
+unordered_map (C++ STL) — Python: dict
+python
+d = {'a': 1, 'b': 2}
+d['c'] = 3            # {'a':1, 'b':2, 'c':3}
+d.get('a')            # 1
+d.keys()              # dict_keys(['a','b','c'])
+d.values()            # dict_values([1,2,3])
+d.items()             # dict_items([('a',1), ('b',2), ('c',3)])
+d.pop('b')            # Removes key 'b'
+d.popitem()           # Removes an arbitrary key-value
+d.clear()             # {}
+d.update({'d': 4})    # {'a':1, 'c':3, 'd':4}
+Common Methods: get, keys, values, items, pop, popitem, clear, update, setdefault
+
+map (C++ STL) — Python: dict
+Same as unordered_map.
+
+unordered_multimap (C++ STL) — Python: collections.defaultdict(list)
+python
+from collections import defaultdict
+dm = defaultdict(list)
+dm['a'].append(1)
+dm['a'].append(2)
+dm['b'].append(3)
+dm.get('c')           # []
+dm.keys()             # dict_keys(['a', 'b'])
+dm.values()           # dict_values([[1,2],[3]])
+dm.items()            # dict_items([('a',[1,2]), ('b',[3])])
+Common Methods: All dict methods, but appending to values makes it act as a multimap.
+
+queue (C++ STL) — Python: collections.deque or queue.Queue
+With collections.deque (common for algorithms):
+python
+from collections import deque
+q = deque([1,2])
+q.append(3)           # [1,2,3]
+q.popleft()           # Removes and returns 1
+q.clear()             # deque([])
+q.extend([4,5])       # deque([4,5])
+Common Methods: append, popleft, extend, clear
+
+With queue.Queue (thread-safe):
+python
+import queue
+q = queue.Queue()
+q.put(1)
+q.put(2)
+q.get()               # 1
+q.qsize()             # 1
+Common Methods: put, get, qsize
+
+stack (C++ STL) — Python: list or collections.deque
+python
+stack = []
+stack.append(10)      # Push
+stack.append(20)
+x = stack.pop()       # 20
+Common Methods: append, pop (LIFO)
+
+deque (C++ STL) — Python: collections.deque
+python
+from collections import deque
+d = deque([1,2,3])
+d.appendleft(0)       # deque([0,1,2,3])
+d.append(4)           # deque([0,1,2,3,4])
+d.reverse()           # deque([4,3,2,1,0])
+d.pop()               # Removes 4
+d.popleft()           # Removes 0
+d.rotate(2)           # deque([2,1,3])
+Common Methods: append, appendleft, pop, popleft, reverse, rotate, clear, extend, extendleft
+
+priority_queue (C++ STL) — Python: heapq
+python
+import heapq
+pq = []
+heapq.heappush(pq, 5)
+heapq.heappush(pq, 2)
+x = heapq.heappop(pq) # 2
+heapq.heapify([3, 1, 4])
+heapq.nlargest(2, [5, 1, 8]) # [8, 5]
+heapq.nsmallest(2, [5, 1, 8]) # [1, 5]
+Common Functions: heappush, heappop, heapify, nlargest, nsmallest
+
+multimap (C++ STL) — Python: collections.defaultdict(list)
+Same as unordered_multimap (see above).
+
+list (C++ STL, as doubly-linked) — Python: collections.deque
+Python's list is a dynamic array, not a linked list; for C++ STL's doubly-linked list, use deque:
+
+python
+from collections import deque
+lst = deque([1,2,3])
+lst.appendleft(0)
+lst.append(4)
+lst.pop()
+lst.popleft()
+lst.extend([5,6])
+lst.reverse()
+Common Methods: append, appendleft, pop, popleft, extend, reverse, etc.
+
+next_permutation (C++ STL) — Python: itertools.permutations
+python
+from itertools import permutations
+for p in permutations([1,2,3]):
+    print(p)  # (1,2,3), (1,3,2), ...
+# To get next lexicographical permutation:
+import itertools
+arr = [1,2,3]
+p = list(permutations(arr))
+print(p[1])  # (1,3,2)
+__builtin_popcount() (C++ STL) — Python: bin(x).count('1')
+python
+x = 13
+print(bin(x))         # '0b1101'
+print(bin(x).count('1'))  # 3
+sort() (C++ STL) — Python: list.sort(), sorted()
+python
+arr = [3, 1, 2]
+arr.sort()            # arr is now [1,2,3]
+arr.sort(reverse=True)# arr is now [3,2,1]
+print(sorted([5, 2, 3]))  # [2, 3, 5]
+min_element() (C++ STL) — Python: min()
+python
+arr = [2, 7, 3]
+print(min(arr))       # 2
+max_element() (C++ STL) — Python: max()
+python
+arr = [2, 7, 3]
+print(max(arr))       # 7
