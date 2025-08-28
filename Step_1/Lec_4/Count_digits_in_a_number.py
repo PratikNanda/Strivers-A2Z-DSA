@@ -1,3 +1,6 @@
+def count_digits(n):
+    return len(str(n))
+
 # def count_digits(n):
 #     count = 0
 #     convert = str(n)
@@ -12,10 +15,11 @@
 #         n = n//10
 #     return count
 
-import math
-def count_digits(n):
-    count = int(math.log10(n)+1)
-    return count
+
+# import math
+# def count_digits(n):
+#     count = int(math.log10(n)+1)
+#     return count
 
 def main():
     number = int(input("Enter the Number: "))
