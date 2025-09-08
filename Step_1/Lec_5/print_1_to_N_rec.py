@@ -21,7 +21,7 @@ def rec_1_to_N(i,num):
 # def rec_1_to_N(i,num):
 #     if i < 1:
 #         return
-#     rec_1_to_N(i-1,num)
+#     rec_1_to_N(i-1,num) #give input as (N,N)
 #     print(i)
 
 def main():

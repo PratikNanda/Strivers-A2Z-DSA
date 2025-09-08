@@ -2,7 +2,7 @@
 #     if i < 1:
 #         return
 #     print(i)
-#     rec_N_to_1(i-1,num)
+#     rec_N_to_1(i-1,num) #give input as (N,N)
 
 
 #----------Backtracking----------------
